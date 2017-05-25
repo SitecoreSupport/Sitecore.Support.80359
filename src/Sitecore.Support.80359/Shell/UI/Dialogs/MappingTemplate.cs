@@ -159,11 +159,23 @@ namespace Sitecore.Support.Forms.Shell.UI.Dialogs
 
         private bool IsOwnField(TemplateItem template, ID templateFieldID)
         {
+            
             foreach (TemplateFieldItem item in template.OwnFields)
             {
                 if (item.ID == templateFieldID)
                 {
                     return true;
+                }
+            }
+            //the base template fields are not considered -  fix
+            foreach (TemplateItem baseTemp in template.BaseTemplates)
+            {
+                foreach (TemplateFieldItem item in baseTemp.OwnFields)
+                {
+                    if (item.ID == templateFieldID)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
@@ -239,7 +251,7 @@ namespace Sitecore.Support.Forms.Shell.UI.Dialogs
             if (!Context.ClientPage.IsEvent)
             {
                 this.Localize();
-                this.LoadMapping();
+                
                 if (!string.IsNullOrEmpty(this.Template))
                 {
                     this.EbTemplate.Value = this.Template;
@@ -248,6 +260,7 @@ namespace Sitecore.Support.Forms.Shell.UI.Dialogs
                 {
                     this.EbDestination.Value = this.Destination;
                 }
+                this.LoadMapping();
                 this.EbTemplate.ReadOnly = true;
                 this.EbDestination.ReadOnly = true;
                 this.ShowStandardField.Checked = this.StandartFields == "1";

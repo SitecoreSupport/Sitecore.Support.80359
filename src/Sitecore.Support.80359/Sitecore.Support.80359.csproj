@@ -63,7 +63,9 @@
     <Compile Include="Shell\UI\Dialogs\MappingTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sitecore\shell\Override\MappingTemplate.xml" />
+    <Content Include="sitecore\shell\Override\MappingTemplate.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -85,7 +87,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57659/</IISUrl>
+          <IISUrl>http://localhost:59645/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
